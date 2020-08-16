@@ -205,7 +205,8 @@ def ttt_check(id):
 
 @bot.group()
 async def ttt(ctx):
-    pass
+    if ctx.invoked_subcommand is None:
+        await ctx.send("Type `tur ttt info` to get information about Tic Tac Toe.")
 
 
 @ttt.command(name='info')
