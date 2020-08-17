@@ -26,7 +26,7 @@ async def bal(ctx):
 
     description = f'**Balance**: {number_comma(economy[str(real_id)])} Seashells'
     embed_var = discord.Embed(description=description)
-    embed_var.set_author(name=f'{ctx.author.display_name}\'s Wallet', icon_url=ctx.author.avatar_url)
+    embed_var.set_author(name=f'{ctx.author.display_name}\'s Collection', icon_url=ctx.author.avatar_url)
 
     await ctx.send(embed=embed_var)
 
