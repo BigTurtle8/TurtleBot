@@ -14,14 +14,15 @@ class TTTGame:
         await ctx.send("That is not the correct input. Please input a coord - ex: A1")
 
     async def display(self, ctx):
-        msg = [[':three:'], [':two:'], [':one:'], [':blue_square:', ':a:', ':b:', ':regional_indicator_c:']]
+        msg = [[':three:'], [':two:'], [':one:'], [':blue_square:', ':regional_indicator_a:',
+                                                   ':regional_indicator_b:', ':regional_indicator_c:']]
         for row, areas in enumerate(self.map):
             for area in areas:
                 msg[row].append(area)
             msg[row].append('\n')
 
         for row, areas in enumerate(msg):
-            msg[row] = list_to_str(msg[row])
+            msg[row] = list_to_str(msg[row], sep=' ')
 
         embed_var = discord.Embed(description=list_to_str(msg, sep=''))
         embed_var.set_author(name=f'{ctx.author.name}\'s Tic Tac Toe Game', icon_url=ctx.author.avatar_url)
@@ -258,8 +259,8 @@ async def stats(ctx):
     games_played = games[str(ctx.author.id)]['ttt']['games']
     wins = games[str(ctx.author.id)]['ttt']['wins']
 
-    description = f'**Games Played:** {str(games_played)} \n' \
-                  f'**Wins:** {str(wins)}'
+    description = f'**Games Played**: {str(games_played)} \n' \
+                  f'**Wins**: {str(wins)}'
     embed_var = discord.Embed(description=description)
     embed_var.set_author(name=f'{ctx.author.name}\'s Stats', icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed_var)
