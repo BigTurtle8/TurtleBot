@@ -57,7 +57,7 @@ async def work(ctx):
     input_json()
 
 
-@bot.command(name='gift', help='Gifts someone money.')
+@bot.command(name='gift', help='Gifts someone seashells.')
 async def gift(ctx, recipient, money: int):
     real_id = econ_check(ctx.author.id)
     recip = discord.utils.get(ctx.guild.members, name=recipient)
@@ -72,7 +72,7 @@ async def gift(ctx, recipient, money: int):
     econ_check(recip.id)
 
     if economy[str(real_id)] < money:
-        await ctx.send("You do not have enough money.")
+        await ctx.send("You do not have enough seashells.")
         return
 
     economy[str(real_id)] -= money
