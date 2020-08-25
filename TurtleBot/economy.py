@@ -24,9 +24,9 @@ def econ_check(id):
 async def bal(ctx):
     real_id = econ_check(ctx.author.id)
 
-    description = f'**Balance**: ${number_comma(economy[str(real_id)])}'
+    description = f'**Balance**: {number_comma(economy[str(real_id)])} Seashells'
     embed_var = discord.Embed(description=description)
-    embed_var.set_author(name=f'{ctx.author.display_name}\'s Wallet', icon_url=ctx.author.avatar_url)
+    embed_var.set_author(name=f'{ctx.author.display_name}\'s Collection', icon_url=ctx.author.avatar_url)
 
     await ctx.send(embed=embed_var)
 
@@ -40,7 +40,7 @@ async def work(ctx):
 
     if found:
         if (elapsed_time := (timer_list[str(ctx.author.id)] + 60) - math.floor(time.monotonic())) >= 0:
-            await ctx.send(f"Don't be a workaholic! You still have to wait for "
+            await ctx.send(f"You're still a bit tired. You still have to wait for "
                            f"`{elapsed_time} seconds` until you can work again!")
             return
 
@@ -50,7 +50,7 @@ async def work(ctx):
 
     money = r.randrange(50, 150, 10)
     economy[str(real_id)] += money
-    embed_var = discord.Embed(description=f'You gained ${str(money)} for your work.')
+    embed_var = discord.Embed(description=f'You were able to find {str(money)} seashells for your work.')
     embed_var.set_author(name=f'Good work {ctx.author.display_name}!', icon_url=ctx.author.avatar_url)
 
     await ctx.send(embed=embed_var)
@@ -78,7 +78,7 @@ async def gift(ctx, recipient, money: int):
     economy[str(real_id)] -= money
     economy[str(recip.id)] += money
 
-    embed_var = discord.Embed(description=f'${str(money)}, just for you, {recip.display_name}!')
+    embed_var = discord.Embed(description=f'{str(money)} seashells, just for you, {recip.display_name}!')
     embed_var.set_author(name=f'From {ctx.author.display_name}...', icon_url=ctx.author.avatar_url)
     embed_var.set_thumbnail(url=recip.avatar_url)
 

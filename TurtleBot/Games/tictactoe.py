@@ -258,8 +258,8 @@ async def stats(ctx):
     games_played = games[str(ctx.author.id)]['ttt']['games']
     wins = games[str(ctx.author.id)]['ttt']['wins']
 
-    description = f'**Games Played:** {str(games_played)} \n' \
-                  f'**Wins:** {str(wins)}'
+    description = f'**Games Played**: {str(games_played)} \n' \
+                  f'**Wins**: {str(wins)}'
     embed_var = discord.Embed(description=description)
     embed_var.set_author(name=f'{ctx.author.name}\'s Stats', icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed_var)
